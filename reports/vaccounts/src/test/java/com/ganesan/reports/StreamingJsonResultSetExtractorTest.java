@@ -9,7 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ganesan.reports.adapter.StreamingJsonResultSetExtractor;
+import com.ganesan.reports.adapter.JdbcToJson;
+import com.ganesan.reports.adapter.JdbcToJson;
 
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class StreamingJsonResultSetExtractorTest {
  // @Test
   public void testExtractData() throws SQLException, IOException {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final StreamingJsonResultSetExtractor extractor = new StreamingJsonResultSetExtractor(bos);
+
     final ResultSet rs = MockResultSet
         .create(new String[] { "name", "age" },
         new Object[][] {
@@ -26,7 +27,8 @@ public class StreamingJsonResultSetExtractorTest {
           { "Bob", 35 },
           { "Charles", 50 }
       });
-    extractor.extractData(rs);
+
+    JdbcToJson.extractData(rs, bos, JdbcToJson.ColumnNameConversion.CONVERT_NOTHING);
 
 
     final String json = new String(bos.toByteArray());
@@ -49,10 +51,10 @@ public class StreamingJsonResultSetExtractorTest {
   //@Test
   public void testEmptyResultSet() throws SQLException, IOException  {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final StreamingJsonResultSetExtractor extractor = new StreamingJsonResultSetExtractor(bos);
+
     final ResultSet rs = MockResultSet.create(new String[] { "name", "age" },
         new Object[][] {});
-    extractor.extractData(rs);
+    JdbcToJson.extractData(rs, bos, JdbcToJson.ColumnNameConversion.CONVERT_NOTHING);
 
     final String json = new String(bos.toByteArray());
     final ObjectMapper mapper = new ObjectMapper();
