@@ -4,3 +4,7 @@ target
 __pycache__
 .DS_Store
 
+reports/vaccounts/src/main/resources/reports/.settings/org.eclipse.core.resources.prefs
+reports/vaccounts/src/main/resources/reports/.project
+reports/vaccounts/src/main/resources/.project
+reports/vaccounts/src/main/resources/.settings/com.jaspersoft.studio.prefs
