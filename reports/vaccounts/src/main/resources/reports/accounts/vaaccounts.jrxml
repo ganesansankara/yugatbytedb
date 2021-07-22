@@ -55,7 +55,7 @@
 				<staticText>
 					<reportElement style="Title" x="40" y="0" width="514" height="37" forecolor="#878787" backcolor="#878787" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="14" isBold="true"/>
+						<font fontName="Arial" size="14" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Account Report]]></text>
 				</staticText>
@@ -69,14 +69,14 @@
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement mode="Transparent" x="400" y="5" width="144" height="21" forecolor="#FFFFFF" backcolor="rgba(255, 255, 255, 0.0)" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="12" isBold="true"/>
+						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="10" y="5" width="140" height="21" forecolor="#FFFFFF" backcolor="#000000" uuid="6101a466-6927-4127-8b15-34f69677b48d"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="12" isBold="true"/>
+						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Account Statement History]]></text>
 				</staticText>
@@ -97,7 +97,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
 				</box>
 				<textElement>
-					<font fontName="Sans Serif" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Acct No]]></text>
 			</staticText>
@@ -109,7 +109,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
 				</box>
 				<textElement>
-					<font fontName="Sans Serif" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Acct Balance]]></text>
 			</staticText>
@@ -119,7 +119,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Double"/>
 				</box>
 				<textElement>
-					<font fontName="Sans Serif" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Acct Name]]></text>
 			</staticText>
@@ -149,7 +149,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement>
-						<font fontName="Sans Serif"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ACCT_NO}]]></textFieldExpression>
 				</textField>
@@ -165,7 +165,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement>
-						<font fontName="Sans Serif"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
 				</textField>
@@ -181,7 +181,7 @@
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement>
-						<font fontName="Sans Serif"/>
+						<font fontName="Arial"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{BALANCE}]]></textFieldExpression>
 				</textField>
@@ -205,21 +205,21 @@
 				<textField evaluationTime="Report">
 					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
 					<textElement verticalAlignment="Middle">
-						<font fontName="Sans Serif" size="10" isBold="false"/>
+						<font fontName="Arial" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
