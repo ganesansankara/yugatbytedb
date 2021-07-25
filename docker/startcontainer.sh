@@ -61,15 +61,15 @@ ${DOCKER_CMD} run --platform linux/amd64 -d --name ${cname}  -p 8080:8088 ${cnam
 ${DOCKER_CMD} start ${cname} 
 
 #${DOCKER_CMD} run --platform linux/amd64 -d -p 8080:8088 --name superset apache/superset
+
+#Migrate local DB to latest
+${DOCKER_CMD}  exec -it ${cname}  superset db upgrade
 ${DOCKER_CMD} exec -it ${cname}  superset fab create-admin \
                --username admin \
                --password admin \
                --firstname Superset \
                --lastname Admin \
                --email admin@superset.com 
-
-#Migrate local DB to latest
-${DOCKER_CMD}  exec -it ${cname}  superset db upgrade
 
 #Setup roles
 ${DOCKER_CMD}  exec -it ${cname}  superset init

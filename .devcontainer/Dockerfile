@@ -17,3 +17,11 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+
+
+#SQLALCHEMY needs unixodbc. Please not use apt to install. Do not use apt-get
+RUN apt-get update &&  apt update && apt install -y unixodbc unixodbc-dev
+
+RUN pip3 install apache-superset
+
+
