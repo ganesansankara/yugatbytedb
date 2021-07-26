@@ -1,3 +1,5 @@
+#!/bin/bash
+
 pip3 install apache-superset
 pip3 install pyexasol
 
@@ -7,7 +9,8 @@ sudo apt-get update &&  apt update && apt install -y unixodbc unixodbc-dev
 #Install exasol ODBC Driver first
 export odbcfile=exasol-odbc.tar.gz
 #curl https://www.exasol.com/support/secure/attachment/155337/EXASOL_ODBC-7.0.11.tar.gz --output ${odbcfile}
-( cp ${odbcfile} /tmp; cd /tmp; tar -xzf ${odbcfile})
+#( cp ${odbcfile} /tmp; cd /tmp; tar -xzf ${odbcfile})
+#.gz file copied in DockerFile
 
 # Execute the script config_odbc ...
 (cd  /tmp/EXASolution_ODBC-*; ./config_odbc --mode config --force --host DEMODB.EXASOL.COM --user PUB3715 --password=NbMCCidzA )
@@ -18,9 +21,6 @@ sudo cp EXASolution_ODBC-7.0.11/lib/linux/x86_64/*  /usr/lib/x86_64-linux-gnu/
 # Install sqlalchmey package for exasol next
 pip3 install  sqlalchemy-exasol
 
-# Test script
-python $DEVCONTAINER_HOME/sqlalchemyexasol-test
-
 superset db upgrade
 superset fab create-admin \
                --username admin \
@@ -30,6 +30,9 @@ superset fab create-admin \
                --email admin@superset.com 
 superset init
 
-superset run -h 0.0.0.0 -p 8080
+# Test script
+python ./sqlalchemyexasol-test
+
+#superset run -h 0.0.0.0 -p 8080
 
 #exa+pyodbc://PUB3715:NbMCCidzA@DEMODB.EXASOL.COM:8563/PUB3715?CONNECTIONLCALL=en_US.UTF-8&driver=/usr/lib/x86_64-linux-gnu/libexaodbc-uo2214lv2.so
