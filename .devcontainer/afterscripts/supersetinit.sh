@@ -9,13 +9,13 @@ sudo apt-get update &&  apt update && apt install -y unixodbc unixodbc-dev
 #Install exasol ODBC Driver first
 export odbcfile=exasol-odbc.tar.gz
 #curl https://www.exasol.com/support/secure/attachment/155337/EXASOL_ODBC-7.0.11.tar.gz --output ${odbcfile}
-#( cp ${odbcfile} /tmp; cd /tmp; tar -xzf ${odbcfile})
+#cp ${odbcfile} /tmp;
 #.gz file copied in DockerFile
 
 # Execute the script config_odbc ...
-(cd  /tmp/EXASolution_ODBC-*; ./config_odbc --mode config --force --host DEMODB.EXASOL.COM --user PUB3715 --password=NbMCCidzA )
+tar -xzf ${odbcfile}
+(cd  EXASolution_ODBC-*; ./config_odbc --mode config --force --host DEMODB.EXASOL.COM --user PUB3715 --password=NbMCCidzA )
 sudo cp EXASolution_ODBC-7.0.11/lib/linux/x86_64/*  /usr/lib/x86_64-linux-gnu/
-
 
 
 # Install sqlalchmey package for exasol next
@@ -31,7 +31,7 @@ superset fab create-admin \
 superset init
 
 # Test script
-python ./sqlalchemyexasol-test
+#python sqlalchemyexasol-test.py
 
 #superset run -h 0.0.0.0 -p 8080
 

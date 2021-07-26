@@ -26,7 +26,8 @@ ENV REMOTE_DEVCONTAINER_HOME=/workspaces/exasol-yugabytedb/.devcontainer
 RUN pip3 install apache-superset
 #RUN apt install -y maven
 
+USER vscode
 COPY .devcontainer/afterscripts /tmp/afterscripts
 
 RUN /bin/bash -c 'source /tmp/afterscripts/pyenvsettings.sh; echo $PYENV_ROOT $DEVCONTAINREMOTE_DEVCONTAINER_HOMEER_HOME'
-RUN /bin/bash -c '(cd /tmp/afterscripts; sh -x /tmp/afterscripts/supersetinit.sh)'
+RUN /bin/bash -c '(cd /tmp/afterscripts; sh -x supersetinit.sh)'
