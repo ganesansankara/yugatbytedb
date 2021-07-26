@@ -20,13 +20,12 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 
 #SQLALCHEMY needs unixodbc. Please not use apt to install. Do not use apt-get
-RUN apt-get update &&  apt update && apt install -y unixodbc unixodbc-dev
+RUN sudo apt-get update &&  sudo apt update && sudo apt install -y unixodbc unixodbc-dev 
 
 ENV REMOTE_DEVCONTAINER_HOME=/workspaces/exasol-yugabytedb/.devcontainer
 RUN pip3 install apache-superset
 #RUN apt install -y maven
 
-USER vscode
 COPY .devcontainer/afterscripts /tmp/afterscripts
 
 RUN /bin/bash -c 'source /tmp/afterscripts/pyenvsettings.sh; echo $PYENV_ROOT $DEVCONTAINREMOTE_DEVCONTAINER_HOMEER_HOME'
