@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3
 {
-	"name": "Python 3",
+	"name": "GANESAN-SUPERSET",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
@@ -13,6 +13,14 @@
 			"NODE_VERSION": "lts/*"
 		}
 	},
+	"containerEnv": {
+		"REMOTE_DEVCONTAINER_HOME": "/workspaces/exasol-yugabytedb/.devcontainer",
+		"MY_CONTAINER_VAR2": "${localEnv:SOME_LOCAL_VAR}"
+	},
+
+	"mounts": [
+		"source=/local/source/path/goes/here,target=/target/path/in/container/goes/here,type=bind,consistency=cached"
+	  ],
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
