@@ -18,6 +18,7 @@ tar -xzf ${odbcfile}
 (cd  EXASolution_ODBC-*; ./config_odbc --mode config --force --host DEMODB.EXASOL.COM --user PUB3715 --password=NbMCCidzA )
 cp EXASolution_ODBC-7.0.11/lib/linux/x86_64/*  /usr/lib/x86_64-linux-gnu/
 cp home_odbc.ini ~/.odbc.ini
+( cp home_odbc.ini ~superset/.odbc.ini; chown superset ~superset/.odbc.ini)
 
 # Install sqlalchmey package for exasol next
 pip3 install sqlalchemy-exasol

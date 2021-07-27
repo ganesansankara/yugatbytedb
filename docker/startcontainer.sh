@@ -55,14 +55,7 @@ ${DOCKER_CMD} build --platform linux/amd64 --tag ${cname} --file ./SuperSetDocke
 #${DOCKER_CMD} start ${cname} 
 
 #${DOCKER_CMD} run --platform linux/amd64 -it ${cname}  /bin/bash
-
-
-
-#${DOCKER_CMD} run --platform linux/amd64 -d -p 8080:8088 --name superset apache/superset
-
-#Migrate local DB to latest
-#Setup roles
-${DOCKER_CMD} run --platform linux/amd64 -d  --name ${cname} -p 8080:8080 ${cname} superset run -h 0.0.0.0 -p 8080 --debugger 
+${DOCKER_CMD} run --platform linux/amd64 -d --name ${cname} -p 8080:8080 ${cname} superset run -h 0.0.0.0 -p 8080 --debugger 
 ${DOCKER_CMD} exec -it ${cname} superset db upgrade
 ${DOCKER_CMD} exec -it ${cname} superset fab create-admin \
                --username admin \
