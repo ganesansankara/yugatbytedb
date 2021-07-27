@@ -50,21 +50,21 @@ superset_setup () {
 
 cname=ganesan-superset
 #Superset
-# Add Exasol database driver
-cat <<!GG > requirements-local.txt
-pip
-sqlalchemy-exasol[sqlalchemy]
-!GG
-${DOCKER_CMD} build --platform linux/amd64  --tag ${cname} --file ./SuperSetDockerFile .
-${DOCKER_CMD} run --platform linux/amd64 -d --name ${cname}  -p 8080:8088 ${cname} 
+${DOCKER_CMD} build --platform linux/amd64 --tag ${cname} --file ./SuperSetDockerFile .
+#${DOCKER_CMD} run --platform linux/amd64 -d --name ${cname}  -p 8080:8080 ${cname} 
+#${DOCKER_CMD} start ${cname} 
 
-${DOCKER_CMD} start ${cname} 
+#${DOCKER_CMD} run --platform linux/amd64 -it ${cname}  /bin/bash
+
+
 
 #${DOCKER_CMD} run --platform linux/amd64 -d -p 8080:8088 --name superset apache/superset
 
 #Migrate local DB to latest
-${DOCKER_CMD}  exec -it ${cname}  superset db upgrade
-${DOCKER_CMD} exec -it ${cname}  superset fab create-admin \
+#Setup roles
+${DOCKER_CMD} run --platform linux/amd64 -d  --name ${cname} -p 8080:8080 ${cname} superset run -h 0.0.0.0 -p 8080 --debugger 
+${DOCKER_CMD} exec -it ${cname} superset db upgrade
+${DOCKER_CMD} exec -it ${cname} superset fab create-admin \
                --username admin \
                --password admin \
                --firstname Superset \
@@ -75,13 +75,15 @@ ${DOCKER_CMD} exec -it ${cname}  superset fab create-admin \
 ${DOCKER_CMD}  exec -it ${cname}  superset init
 
 
+
+
 ${PS_CMD}
 
 http://${MYIPADDR}:8080/login/
 
 http://localhost:8080/login/
 # For gitpod
-gp preview http://localhost:8080
+#gp preview http://localhost:8080
 
 }
 
@@ -223,6 +225,6 @@ ${PS_CMD}
 #minio_setup
 #yugabytedb_setup
 #exasol_setup
-#superset_setup
-superset_standalone
+superset_setup
+#superset_standalone
 

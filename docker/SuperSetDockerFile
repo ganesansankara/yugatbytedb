@@ -5,16 +5,17 @@
 
 FROM apache/superset:latest
 USER root
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y unixodbc unixodbc-dev  python3-pip
-USER superset
 
-RUN pip3 install --upgrade pip
-RUN pip3 install --upgrade pyodbc 
-RUN pip3 install --upgrade pyexasol
-RUN pip3 install --upgrade sqlalchemy-exasol[sqlalchemy]
+#USER superset
+RUN  apt-get update &&  apt update &&  apt install -y unixodbc unixodbc-dev vim
+
+
+COPY afterscripts /tmp/afterscripts
+
+RUN /bin/bash -c 'source /tmp/afterscripts/pyenvsettings.sh; echo $PYENV_ROOT $DEVCONTAINREMOTE_DEVCONTAINER_HOMEER_HOME'
+RUN /bin/bash -c '(cd /tmp/afterscripts; sh -x supersetinit.sh)'
 
 USER superset
-EXPOSE 8088 
+EXPOSE 8080
 #ENTRYPOINT ["/bin/bash", ""]
 

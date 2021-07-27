@@ -17,6 +17,7 @@ export odbcfile=exasol-odbc.tar.gz
 tar -xzf ${odbcfile}
 (cd  EXASolution_ODBC-*; ./config_odbc --mode config --force --host DEMODB.EXASOL.COM --user PUB3715 --password=NbMCCidzA )
 sudo cp EXASolution_ODBC-7.0.11/lib/linux/x86_64/*  /usr/lib/x86_64-linux-gnu/
+cp home_odbc.ini ~/.odbc.ini # copy to vscode user home dir
 
 # Install sqlalchmey package for exasol next
 pip3 install sqlalchemy-exasol
